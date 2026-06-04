@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="night">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клининг Алматы | Профессиональная уборка</title>
+  <meta name="description" content="Профессиональный клининг в Алматы и области. Уборка квартир, домов, офисов после ремонта, генеральная и ежедневная уборка. Скидки пенсионерам и многодетным семьям." />
+
+  <!-- Fonts: Cyrillic-ready -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    /* ===================== THEME TOKENS ===================== */
+    :root,
+    [data-theme="night"]{
+      --bg:        #060606;
+      --bg-alt:    #101010;
+      --bg-soft:   #161616;
+      --text:      #f4f4f4;
+      --text-mut:  #9b9b9b;
+      --line:      rgba(255,255,255,.12);
+      --line-soft: rgba(255,255,255,.07);
+      --card:      rgba(255,255,255,.035);
+      --card-hov:  rgba(255,255,255,.07);
+      --accent:    #ffffff;          /* strictly black & white at night */
+      --accent-2:  #ffffff;
+      --on-accent: #000000;
+      --overlay:   rgba(0,0,0,.62);
+      --shadow:    0 24px 60px rgba(0,0,0,.55);
+    }
+    [data-theme="day"]{
+      --bg:        #ffffff;
+      --bg-alt:    #f3f6f3;
+      --bg-soft:   #eef2ee;
+      --text:      #0b0f0c;
+      --text-mut:  #5b6a5f;
+      --line:      rgba(14,46,33,.16);
+      --line-soft: rgba(14,46,33,.08);
+      --card:      rgba(14,46,33,.035);
+      --card-hov:  rgba(14,46,33,.08);
+      --accent:    #0e3b29;          /* dark green */
+      --accent-2:  #145238;
+      --on-accent: #ffffff;
+      --overlay:   rgba(6,18,12,.45);
+      --shadow:    0 24px 60px rgba(14,46,33,.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Manrope", system-ui, sans-serif;
+      font-weight:400;
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      transition:background .35s ease, color .35s ease;
+    }
+    section{ scroll-margin-top:84px; }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{ width:100%; max-width:1180px; margin:0 auto; padding:0 18px; }
+
+    .head{ font-family:"Unbounded", sans-serif; }
+    .eyebrow{
+      font-family:"Unbounded", sans-serif;
+      font-size:11px; letter-spacing:.32em; text-transform:uppercase;
+      color:var(--accent);
+      font-weight:600;
+    }
+    [data-theme="night"] .eyebrow{ color:var(--text-mut); }
+
+    .section-title{
+      font-family:"Unbounded", sans-serif;
+      font-weight:800;
+      font-size:clamp(28px, 7vw, 52px);
+      line-height:1.02;
+      text-transform:uppercase;
+      letter-spacing:-.01em;
+      margin:10px 0 0;
+    }
+    .section-sub{ color:var(--accent); font-weight:700; margin-top:8px; }
+    [data-theme="night"] .section-sub{ color:var(--text); }
+
+    /* ===================== NAV ===================== */
+    nav{
+      position:fixed; inset:0 0 auto 0; z-index:60;
+      background:color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line-soft);
+      transition:background .35s ease, border-color .35s ease;
+    }
+    .nav-grid{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:8px;
+      padding:10px 16px;
+      max-width:1180px; margin:0 auto;
+    }
+    .nav-left{ justify-self:start; min-width:0; }
+    .nav-center{ justify-self:center; }
+    .nav-right{ justify-self:end; display:flex; align-items:center; gap:8px; }
+
+    /* Logo (wide + square placeholder) */
+    .logo{
+      display:flex; align-items:center; gap:10px;
+    }
+    .logo-box{
+      height:46px; min-width:46px;
+      display:flex; align-items:center; justify-content:center;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--card);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo-box img{ height:100%; width:auto; object-fit:contain; }
+    .logo-box .ph{
+      font-family:"Unbounded",sans-serif; font-weight:700; font-size:10px;
+      letter-spacing:.14em; color:var(--text-mut); padding:0 12px; text-align:center;
+      text-transform:uppercase;
+    }
+    .logo-name{ min-width:0; }
+    .logo-name b{
+      font-family:"Unbounded",sans-serif; font-weight:800;
+      font-size:15px; letter-spacing:.02em; text-transform:uppercase; display:block; line-height:1;
+    }
+    .logo-name span{ font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--text-mut); }
+
+    /* Language toggle (centered) */
+    .lang{
+      display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+      background:var(--card);
+    }
+    .lang button{
+      font-family:"Unbounded",sans-serif;
+      font-weight:600; font-size:11px; letter-spacing:.14em;
+      padding:8px 12px; border:0; background:transparent; color:var(--text-mut);
+      cursor:pointer; line-height:1; text-transform:uppercase; transition:.2s;
+    }
+    .lang button[aria-pressed="true"]{ background:var(--accent); color:var(--on-accent); }
+
+    /* round icon buttons */
+    .icon-btn{
+      width:42px; height:42px; flex:0 0 auto;
+      display:grid; place-items:center;
+      border:1px solid var(--line); border-radius:999px;
+      background:var(--card); color:var(--text);
+      cursor:pointer; font-size:17px; transition:.2s;
+    }
+    .icon-btn:hover{ background:var(--accent); color:var(--on-accent); border-color:var(--accent); transform:translateY(-1px); }
+    .icon-btn.wa:hover{ background:#25D366; color:#fff; border-color:#25D366; }
+
+    /* hamburger custom icon */
+    .burger{ position:relative; }
+    .burger i{
+      position:absolute; left:11px; right:11px; height:2px; border-radius:2px;
+      background:currentColor; transition:transform .3s ease, opacity .25s ease, top .3s ease;
+    }
+    .burger i:nth-child(1){ top:14px; }
+    .burger i:nth-child(2){ top:20px; }
+    .burger i:nth-child(3){ top:26px; }
+    body.menu-open .burger i:nth-child(1){ top:20px; transform:rotate(45deg); }
+    body.menu-open .burger i:nth-child(2){ opacity:0; }
+    body.menu-open .burger i:nth-child(3){ top:20px; transform:rotate(-45deg); }
+
+    /* ===================== FULLSCREEN MENU ===================== */
+    .menu{
+      position:fixed; inset:0; z-index:55;
+      background:color-mix(in srgb, var(--bg) 97%, transparent);
+      backdrop-filter:blur(8px);
+      opacity:0; pointer-events:none; transform:translateY(-8px);
+      transition:opacity .3s ease, transform .3s ease;
+      overflow-y:auto;
+      padding:84px 0 40px;
+    }
+    body.menu-open .menu{ opacity:1; pointer-events:auto; transform:none; }
+
+    .menu-primary{
+      display:flex; flex-wrap:wrap; gap:10px 22px; margin-bottom:26px;
+    }
+    .menu-primary a{
+      font-family:"Unbounded",sans-serif; font-weight:700;
+      font-size:clamp(22px,6vw,34px); text-transform:uppercase; letter-spacing:-.01em;
+      transition:.2s; line-height:1;
+    }
+    .menu-primary a:hover{ color:var(--accent); }
+    [data-theme="night"] .menu-primary a:hover{ opacity:.6; color:var(--text); }
+
+    .menu-label{
+      font-family:"Unbounded",sans-serif; font-size:11px; letter-spacing:.3em;
+      text-transform:uppercase; color:var(--text-mut); margin:8px 0 14px;
+      border-top:1px solid var(--line-soft); padding-top:18px;
+    }
+    .menu-services{
+      display:grid; grid-template-columns:1fr 1fr; gap:8px 16px;
+    }
+    .menu-services a{
+      display:flex; gap:10px; align-items:flex-start;
+      font-size:13.5px; color:var(--text-mut); padding:6px 0; transition:.2s;
+      border-bottom:1px solid var(--line-soft);
+    }
+    .menu-services a i{ color:var(--accent); font-size:13px; margin-top:3px; width:16px; text-align:center; flex:0 0 auto; }
+    [data-theme="night"] .menu-services a i{ color:var(--text); }
+    .menu-services a:hover{ color:var(--text); }
+
+    .menu-cta{ margin-top:26px; display:flex; flex-wrap:wrap; gap:12px; }
+
+    /* buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      font-family:"Unbounded",sans-serif; font-weight:700; text-transform:uppercase;
+      font-size:13px; letter-spacing:.04em; padding:14px 26px; border-radius:12px;
+      cursor:pointer; transition:.25s; border:1px solid transparent;
+    }
+    .btn-accent{ background:var(--accent); color:var(--on-accent); }
+    .btn-accent:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+    .btn-ghost{ border-color:var(--line); color:var(--text); background:transparent; }
+    .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+    [data-theme="night"] .btn-ghost:hover{ color:var(--text); border-color:var(--text); }
+
+    /* ===================== HERO ===================== */
+    .hero{
+      position:relative; min-height:100svh;
+      display:flex; align-items:flex-end;
+      background:var(--bg-alt);
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      background-image:url("images/hero.jpg");
+      background-size:cover; background-position:center;
+      filter:grayscale(1);                 /* night = b/w */
+    }
+    [data-theme="day"] .hero-bg{ filter:none; }
+    .hero-mask{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, var(--overlay) 0%, transparent 35%, transparent 55%, var(--bg) 100%);
+    }
+    .hero-foot{
+      position:relative; z-index:2; width:100%;
+      padding-bottom:46px;
+    }
+    .hero-tag{
+      font-family:"Unbounded",sans-serif; font-weight:600;
+      font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+      color:#fff; opacity:.85;
+    }
+    [data-theme="day"] .hero-tag{ color:#fff; }
+    .scroll-cue{
+      position:absolute; left:50%; bottom:18px; transform:translateX(-50%);
+      z-index:2; color:#fff; opacity:.7; font-size:18px;
+      animation:bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob{ 0%,100%{ transform:translate(-50%,0); } 50%{ transform:translate(-50%,8px); } }
+
+    /* ===================== SERVICES ===================== */
+    #services{ background:var(--bg); padding:74px 0; }
+    .services-grid{
+      margin-top:34px;
+      display:grid; grid-template-columns:1fr 1fr;   /* 2 vertical columns */
+      gap:10px 14px;
+    }
+    .svc{
+      display:flex; gap:11px; align-items:flex-start;
+      background:var(--card); border:1px solid var(--line-soft);
+      border-radius:12px; padding:14px 14px;
+      transition:.2s; min-height:100%;
+    }
+    .svc:hover{ background:var(--card-hov); border-color:var(--accent); transform:translateY(-2px); }
+    [data-theme="night"] .svc:hover{ border-color:var(--line); }
+    .svc i{
+      color:var(--accent); font-size:17px; margin-top:2px; width:22px; text-align:center; flex:0 0 auto;
+    }
+    [data-theme="night"] .svc i{ color:var(--text); }
+    .svc span{ font-size:13.5px; font-weight:600; line-height:1.3; }
+
+    /* ===================== DISCOUNTS ===================== */
+    #discount{ background:var(--bg-alt); padding:74px 0; transition:background .35s ease; }
+    .disc-grid{ margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .disc-card{
+      position:relative; overflow:hidden;
+      background:var(--card); border:1px solid var(--line);
+      border-radius:18px; padding:26px 22px;
+    }
+    .disc-badge{
+      position:absolute; top:-14px; right:-14px;
+      width:96px; height:96px; border-radius:50%;
+      background:var(--accent); color:var(--on-accent);
+      display:grid; place-content:center; text-align:center;
+      font-family:"Unbounded",sans-serif; font-weight:800; line-height:.9;
+      transform:rotate(8deg);
+    }
+    .disc-badge b{ font-size:26px; }
+    .disc-badge small{ font-size:9px; letter-spacing:.1em; }
+    .disc-card .ic{ font-size:30px; color:var(--accent); }
+    [data-theme="night"] .disc-card .ic{ color:var(--text); }
+    .disc-card h3{ font-family:"Unbounded",sans-serif; font-weight:700; text-transform:uppercase; font-size:18px; margin:14px 0 6px; }
+    .disc-card p{ color:var(--text-mut); font-size:14px; margin:0; max-width:90%; }
+    .disc-note{ margin-top:20px; color:var(--text-mut); font-size:13px; display:flex; gap:8px; align-items:center; }
+    .disc-note i{ color:var(--accent); }
+    [data-theme="night"] .disc-note i{ color:var(--text); }
+
+    /* ===================== CONTACT ===================== */
+    #contact{ background:var(--bg); padding:74px 0 64px; }
+    .contact-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:30px; align-items:center; }
+    .contact-title{
+      font-family:"Unbounded",sans-serif; font-weight:800;
+      font-size:clamp(30px,8vw,64px); line-height:.98; text-transform:uppercase; margin:10px 0 22px;
+    }
+    .contact-line{ display:flex; gap:14px; align-items:flex-start; color:var(--text-mut); font-size:15px; margin:12px 0; }
+    .contact-line i{ color:var(--accent); margin-top:3px; }
+    [data-theme="night"] .contact-line i{ color:var(--text); }
+    .contact-line b{ color:var(--text); }
+    .contact-line a:hover{ color:var(--accent); }
+    [data-theme="night"] .contact-line a:hover{ color:var(--text); text-decoration:underline; }
+    .contact-actions{ display:flex; gap:14px; justify-content:flex-end; }
+    .big-round{
+      width:74px; height:74px; border-radius:50%;
+      display:grid; place-items:center; font-size:26px; transition:.25s;
+    }
+    .big-round.wa{ background:var(--accent); color:var(--on-accent); }
+    .big-round.wa:hover{ background:#25D366; color:#fff; transform:translateY(-3px); }
+    .big-round.call{ border:1px solid var(--line); color:var(--text); }
+    .big-round.call:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
+
+    /* ===================== FOOTER ===================== */
+    footer{ background:var(--bg-alt); border-top:1px solid var(--line-soft); padding:26px 0; }
+    .foot-grid{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center; }
+    .foot-grid p{ margin:0; font-size:12px; color:var(--text-mut); letter-spacing:.04em; }
+
+    /* reveal animation */
+    .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+
+    /* back to top */
+    #toTop{
+      position:fixed; right:18px; bottom:18px; z-index:50;
+      width:46px; height:46px; border-radius:50%;
+      background:var(--accent); color:var(--on-accent); border:none;
+      display:none; place-items:center; cursor:pointer; font-size:16px;
+      box-shadow:var(--shadow);
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width:768px){
+      .logo-box{ height:42px; min-width:42px; }
+      .logo-name{ display:none; }              /* keep nav compact on phones */
+      .icon-btn{ width:38px; height:38px; font-size:16px; }
+      .lang button{ padding:7px 10px; font-size:10px; }
+      .contact-grid{ grid-template-columns:1fr; }
+      .contact-actions{ justify-content:flex-start; }
+    }
+    @media (max-width:520px){
+      .nav-grid{ gap:6px; padding:9px 12px; }
+      .disc-grid{ grid-template-columns:1fr; }
+      .svc{ padding:12px 11px; border-radius:10px; }
+      .svc span{ font-size:12.5px; }
+      .svc i{ font-size:15px; width:18px; }
+      .menu-services{ grid-template-columns:1fr; }
+      .menu{ padding-top:78px; }
+    }
+    @media (max-width:360px){
+      .nav-grid{ grid-template-columns:auto auto auto; }
+      .nav-center{ order:3; grid-column:1 / -1; justify-self:center; padding-top:6px; }
+    }
+  </style>
+</head>
+
+<body data-lang="ru">
+
+  <!-- ===================== NAV ===================== -->
+  <nav>
+    <div class="nav-grid">
+      <!-- LEFT: logo -->
+      <div class="nav-left">
+        <a href="#top" class="logo" aria-label="На главную">
+          <span class="logo-box">
+            <!-- замените на свой файл logo.png (широкий/квадратный) -->
+            <img src="logo.png" alt="Логотип" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <span class="ph" style="display:none">ЛОГО</span>
+          </span>
+          <span class="logo-name">
+            <b>CLEAN ALMATY</b>
+            <span data-i18n="brand_sub">Клининговая служба</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- CENTER: language -->
+      <div class="nav-center">
+        <div class="lang" role="group" aria-label="Язык">
+          <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-set-lang="kz" aria-pressed="false">KZ</button>
+        </div>
+      </div>
+
+      <!-- RIGHT: theme + whatsapp + burger -->
+      <div class="nav-right">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Сменить тему">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+        <a class="icon-btn wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <button class="icon-btn burger" id="burger" type="button" aria-label="Меню" aria-expanded="false">
+          <i></i><i></i><i></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== FULLSCREEN MENU ===================== -->
+  <div class="menu" id="menu">
+    <div class="wrap">
+      <nav class="menu-primary" aria-label="Основное меню">
+        <a href="#top" data-i18n="nav_home">Главная</a>
+        <a href="#services" data-i18n="nav_services">Услуги</a>
+        <a href="#discount" data-i18n="nav_discount">Скидки</a>
+        <a href="#contact" data-i18n="nav_contact">Контакты</a>
+      </nav>
+
+      <div class="menu-label" data-i18n="menu_all">Все виды услуг</div>
+      <div class="menu-services" id="menuServices"><!-- JS --></div>
+
+      <div class="menu-cta">
+        <a class="btn btn-accent js-wa" href="#" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i><span data-i18n="cta_order">Заказать уборку</span>
+        </a>
+        <a class="btn btn-ghost" href="tel:+77079062810">
+          <i class="fa-solid fa-phone"></i> +7 707 906 28 10
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <header id="top" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-mask"></div>
+    <div class="hero-foot">
+      <div class="wrap">
+        <p class="hero-tag" data-i18n="hero_tag">Клининг • Алматы и область</p>
+      </div>
+    </div>
+    <a href="#services" class="scroll-cue" aria-label="Вниз"><i class="fa-solid fa-chevron-down"></i></a>
+  </header>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="services_eyebrow">Что мы делаем</p>
+        <h2 class="section-title" data-i18n="services_title">Виды услуг</h2>
+        <p class="section-sub" data-i18n="services_sub">Жильё • Коммерция • Фасады</p>
+      </div>
+      <div class="services-grid reveal" id="servicesGrid"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ===================== DISCOUNTS ===================== -->
+  <section id="discount">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="disc_eyebrow">Специальные условия</p>
+        <h2 class="section-title" data-i18n="disc_title">Скидки</h2>
+      </div>
+
+      <div class="disc-grid reveal">
+        <div class="disc-card">
+          <div class="disc-badge"><span><b>15%</b><br><small data-i18n="disc_off">скидка</small></span></div>
+          <i class="fa-solid fa-user-clock ic"></i>
+          <h3 data-i18n="disc_pens_title">Пенсионерам</h3>
+          <p data-i18n="disc_pens_text">Специальная скидка для пенсионеров на все виды уборки. Достаточно сообщить при заказе.</p>
+        </div>
+        <div class="disc-card">
+          <div class="disc-badge"><span><b>15%</b><br><small data-i18n="disc_off">скидка</small></span></div>
+          <i class="fa-solid fa-people-roof ic"></i>
+          <h3 data-i18n="disc_fam_title">Многодетным семьям</h3>
+          <p data-i18n="disc_fam_text">Скидка для многодетных семей. Помогаем поддерживать чистоту дома по доступной цене.</p>
+        </div>
+      </div>
+
+      <div class="disc-note reveal">
+        <i class="fa-solid fa-circle-info"></i>
+        <span data-i18n="disc_note">Скидки не суммируются с другими акциями. Подробности уточняйте по телефону или в WhatsApp.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="contact_eyebrow">Свяжитесь с нами</p>
+          <h2 class="contact-title" data-i18n="contact_title">Закажите уборку</h2>
+
+          <div class="contact-line">
+            <i class="fa-solid fa-phone"></i>
+            <span><b data-i18n="contact_phone_label">Телефон:</b> <a href="tel:+77079062810">+7 707 906 28 10</a></span>
+          </div>
+          <div class="contact-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <span><b data-i18n="contact_geo_label">Регион:</b> <span data-i18n="contact_geo">Алматы и область</span></span>
+          </div>
+          <div class="contact-line">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span><b>WhatsApp:</b> <a class="js-wa" href="#" target="_blank" rel="noopener" data-i18n="contact_wa">написать сообщение</a></span>
+          </div>
+        </div>
+
+        <div class="contact-actions reveal">
+          <a class="big-round wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="big-round call" href="tel:+77079062810" aria-label="Позвонить"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap foot-grid">
+      <p>© 2026 CLEAN ALMATY. <span data-i18n="footer_rights">Все права защищены.</span></p>
+      <p data-i18n="footer_geo">Профессиональный клининг — Алматы и область</p>
+    </div>
+  </footer>
+
+  <button id="toTop" aria-label="Наверх"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    /* ============ WhatsApp links ============ */
+    const WA_PHONE = "77079062810";
+    const WA_TEXT  = "Здравствуйте! Пишу с сайта. Хочу заказать уборку, подскажите детали, пожалуйста.";
+    document.querySelectorAll(".js-wa").forEach(a=>{
+      a.href = "https://wa.me/"+WA_PHONE+"?text="+encodeURIComponent(WA_TEXT);
+    });
+
+    /* ============ Services data ============ */
+    const SERVICES = [
+      {ic:"fa-paint-roller",        ru:"Уборка квартиры после ремонта",      kz:"Жөндеуден кейінгі пәтерді тазалау"},
+      {ic:"fa-broom",               ru:"Уборка запущенной квартиры",         kz:"Қараусыз қалған пәтерді тазалау"},
+      {ic:"fa-house-flood-water",   ru:"Уборка после затопления",            kz:"Су тасқынынан кейінгі тазалау"},
+      {ic:"fa-spray-can-sparkles",  ru:"Генеральная уборка",                 kz:"Жалпы тазалау"},
+      {ic:"fa-calendar-day",        ru:"Ежедневная уборка",                  kz:"Күнделікті тазалау"},
+      {ic:"fa-bolt",                ru:"Срочная уборка",                     kz:"Жедел тазалау"},
+      {ic:"fa-fire",                ru:"Уборка после пожара",                kz:"Өрттен кейінгі тазалау"},
+      {ic:"fa-kitchen-set",         ru:"Уборка кухни",                       kz:"Ас үйді тазалау"},
+      {ic:"fa-bath",                ru:"Уборка ванной и туалета",            kz:"Жуынатын бөлме мен дәретхананы тазалау"},
+      {ic:"fa-window-maximize",     ru:"Мойка окон",                         kz:"Терезе жуу"},
+      {ic:"fa-border-all",          ru:"Мойка натяжных потолков",            kz:"Керме төбені жуу"},
+      {ic:"fa-door-open",           ru:"Мойка балконов и лоджий",            kz:"Балкондар мен лоджияларды жуу"},
+      {ic:"fa-house-chimney",       ru:"Уборка домов и коттеджей",           kz:"Үйлер мен коттедждерді тазалау"},
+      {ic:"fa-store",               ru:"Мытьё витрин",                       kz:"Витриналарды жуу"},
+      {ic:"fa-building",            ru:"Мойка фасадов зданий",               kz:"Ғимарат қасбеттерін жуу"},
+      {ic:"fa-briefcase",           ru:"Уборка офисов",                      kz:"Кеңселерді тазалау"},
+      {ic:"fa-tree",                ru:"Уборка прилегающей территории",      kz:"Іргелес аумақты тазалау"},
+      {ic:"fa-city",                ru:"Уборка бизнес-центров",              kz:"Бизнес орталықтарды тазалау"},
+      {ic:"fa-square-parking",      ru:"Уборка подземных паркингов",         kz:"Жерасты паркингтерді тазалау"},
+      {ic:"fa-dumbbell",            ru:"Уборка фитнес-клубов",               kz:"Фитнес клубтарды тазалау"},
+      {ic:"fa-scissors",            ru:"Уборка салонов красоты",             kz:"Сұлулық салондарын тазалау"},
+      {ic:"fa-cart-shopping",       ru:"Уборка магазинов",                   kz:"Дүкендерді тазалау"},
+    ];
+
+    /* ============ i18n dictionary ============ */
+    const I18N = {
+      ru:{
+        brand_sub:"Клининговая служба",
+        nav_home:"Главная", nav_services:"Услуги", nav_discount:"Скидки", nav_contact:"Контакты",
+        menu_all:"Все виды услуг",
+        cta_order:"Заказать уборку",
+        hero_tag:"Клининг • Алматы и область",
+        services_eyebrow:"Что мы делаем", services_title:"Виды услуг", services_sub:"Жильё • Коммерция • Фасады",
+        disc_eyebrow:"Специальные условия", disc_title:"Скидки", disc_off:"скидка",
+        disc_pens_title:"Пенсионерам",
+        disc_pens_text:"Специальная скидка для пенсионеров на все виды уборки. Достаточно сообщить при заказе.",
+        disc_fam_title:"Многодетным семьям",
+        disc_fam_text:"Скидка для многодетных семей. Помогаем поддерживать чистоту дома по доступной цене.",
+        disc_note:"Скидки не суммируются с другими акциями. Подробности уточняйте по телефону или в WhatsApp.",
+        contact_eyebrow:"Свяжитесь с нами", contact_title:"Закажите уборку",
+        contact_phone_label:"Телефон:", contact_geo_label:"Регион:", contact_geo:"Алматы и область",
+        contact_wa:"написать сообщение",
+        footer_rights:"Все права защищены.",
+        footer_geo:"Профессиональный клининг — Алматы и область",
+      },
+      kz:{
+        brand_sub:"Клининг қызметі",
+        nav_home:"Басты бет", nav_services:"Қызметтер", nav_discount:"Жеңілдіктер", nav_contact:"Байланыс",
+        menu_all:"Қызмет түрлері",
+        cta_order:"Тазалауға тапсырыс",
+        hero_tag:"Клининг • Алматы және облыс",
+        services_eyebrow:"Біз не істейміз", services_title:"Қызмет түрлері", services_sub:"Тұрғын үй • Коммерция • Қасбет",
+        disc_eyebrow:"Арнайы шарттар", disc_title:"Жеңілдіктер", disc_off:"жеңілдік",
+        disc_pens_title:"Зейнеткерлерге",
+        disc_pens_text:"Зейнеткерлерге барлық тазалау түрлеріне арнайы жеңілдік. Тапсырыс кезінде айтсаңыз жеткілікті.",
+        disc_fam_title:"Көп балалы отбасыларға",
+        disc_fam_text:"Көп балалы отбасыларға жеңілдік. Үй тазалығын қолжетімді бағамен сақтауға көмектесеміз.",
+        disc_note:"Жеңілдіктер басқа акциялармен қосылмайды. Толығырақ телефон немесе WhatsApp арқылы.",
+        contact_eyebrow:"Бізбен байланысыңыз", contact_title:"Тазалауға тапсырыс беріңіз",
+        contact_phone_label:"Телефон:", contact_geo_label:"Аймақ:", contact_geo:"Алматы және облыс",
+        contact_wa:"хабарлама жазу",
+        footer_rights:"Барлық құқықтар қорғалған.",
+        footer_geo:"Кәсіби клининг — Алматы және облыс",
+      }
+    };
+
+    /* ============ Render services ============ */
+    function renderServices(lang){
+      const grid = document.getElementById("servicesGrid");
+      const menu = document.getElementById("menuServices");
+      grid.innerHTML = ""; menu.innerHTML = "";
+      SERVICES.forEach(s=>{
+        const label = s[lang];
+        const card = document.createElement("div");
+        card.className = "svc";
+        card.innerHTML = `<i class="fa-solid ${s.ic}"></i><span>${label}</span>`;
+        grid.appendChild(card);
+
+        const link = document.createElement("a");
+        link.href = "#services";
+        link.innerHTML = `<i class="fa-solid ${s.ic}"></i><span>${label}</span>`;
+        menu.appendChild(link);
+      });
+    }
+
+    /* ============ Apply language ============ */
+    function applyLang(lang){
+      if(!I18N[lang]) lang = "ru";
+      document.documentElement.setAttribute("lang", lang === "kz" ? "kk" : "ru");
+      document.body.setAttribute("data-lang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const v = I18N[lang][el.dataset.i18n];
+        if(typeof v !== "undefined") el.textContent = v;
+      });
+      document.querySelectorAll("[data-set-lang]").forEach(b=>{
+        b.setAttribute("aria-pressed", String(b.dataset.setLang === lang));
+      });
+      renderServices(lang);
+      try{ localStorage.setItem("clnLang", lang); }catch(e){}
+    }
+
+    /* ============ Theme ============ */
+    function applyTheme(theme){
+      document.documentElement.setAttribute("data-theme", theme);
+      const icon = document.getElementById("themeIcon");
+      icon.className = theme === "day" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      try{ localStorage.setItem("clnTheme", theme); }catch(e){}
+    }
+
+    /* ============ Init ============ */
+    let lang = "ru", theme = "night";
+    try{ lang = localStorage.getItem("clnLang") || "ru"; }catch(e){}
+    try{ theme = localStorage.getItem("clnTheme") || "night"; }catch(e){}
+    applyTheme(theme);
+    applyLang(lang);
+
+    document.querySelectorAll("[data-set-lang]").forEach(b=>{
+      b.addEventListener("click", ()=> applyLang(b.dataset.setLang));
+    });
+    document.getElementById("themeBtn").addEventListener("click", ()=>{
+      const cur = document.documentElement.getAttribute("data-theme");
+      applyTheme(cur === "night" ? "day" : "night");
+    });
+
+    /* ============ Menu ============ */
+    const burger = document.getElementById("burger");
+    const menuEl = document.getElementById("menu");
+    function closeMenu(){ document.body.classList.remove("menu-open"); burger.setAttribute("aria-expanded","false"); }
+    burger.addEventListener("click", ()=>{
+      const open = !document.body.classList.contains("menu-open");
+      document.body.classList.toggle("menu-open", open);
+      burger.setAttribute("aria-expanded", String(open));
+    });
+    menuEl.addEventListener("click", e=>{ if(e.target.closest("a")) closeMenu(); });
+    document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeMenu(); });
+
+    /* ============ Reveal on scroll ============ */
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el=> io.observe(el));
+
+    /* ============ Back to top ============ */
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", ()=>{
+      toTop.style.display = window.scrollY > 500 ? "grid" : "none";
+    });
+    toTop.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"}));
+  </script>
+</body>
+</html>
