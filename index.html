@@ -237,11 +237,17 @@
     }
     .hero-bg{
       position:absolute; inset:0;
-      background-image:url("images/hero.jpg");
       background-size:cover; background-position:center;
-      filter:grayscale(1);                 /* night = b/w */
+      transition:opacity .35s ease;
     }
-    [data-theme="day"] .hero-bg{ filter:none; }
+    /* Desktop backgrounds */
+    [data-theme="night"] .hero-bg{ background-image:url("images/hero-night-desktop.jpg"); }
+    [data-theme="day"]   .hero-bg{ background-image:url("images/hero-day-desktop.jpg"); }
+    /* Mobile backgrounds */
+    @media (max-width:768px){
+      [data-theme="night"] .hero-bg{ background-image:url("images/hero-night-mobile.jpg"); }
+      [data-theme="day"]   .hero-bg{ background-image:url("images/hero-day-mobile.jpg"); }
+    }
     .hero-mask{
       position:absolute; inset:0;
       background:linear-gradient(180deg, var(--overlay) 0%, transparent 35%, transparent 55%, var(--bg) 100%);
