@@ -115,6 +115,7 @@
       display:flex; align-items:center; gap:10px;
     }
     .logo-box{
+      position:relative;
       height:46px; min-width:46px;
       display:flex; align-items:center; justify-content:center;
       border:1px solid var(--line);
@@ -123,10 +124,16 @@
       overflow:hidden;
       flex:0 0 auto;
     }
-    .logo-box img{ height:100%; width:auto; object-fit:contain; }
+    .logo-img{ height:100%; width:auto; object-fit:contain; position:relative; z-index:1; }
+    /* theme-based logo switch */
+    .logo-day{ display:none; }
+    [data-theme="day"] .logo-night{ display:none; }
+    [data-theme="day"] .logo-day{ display:block; }
     .logo-box .ph{
+      position:absolute; inset:0; z-index:0;
+      display:flex; align-items:center; justify-content:center;
       font-family:"Unbounded",sans-serif; font-weight:700; font-size:10px;
-      letter-spacing:.14em; color:var(--text-mut); padding:0 12px; text-align:center;
+      letter-spacing:.14em; color:var(--text-mut); text-align:center;
       text-transform:uppercase;
     }
     .logo-name{ min-width:0; }
@@ -261,7 +268,7 @@
       font-size:12px; letter-spacing:.28em; text-transform:uppercase;
       color:#fff; opacity:.85;
     }
-    [data-theme="day"] .hero-tag{ color:#fff; }
+    [data-theme="day"] .hero-tag{ color:#000; opacity:1; }
     .scroll-cue{
       position:absolute; left:50%; bottom:18px; transform:translateX(-50%);
       z-index:2; color:#fff; opacity:.7; font-size:18px;
@@ -417,9 +424,10 @@
       <div class="nav-left">
         <a href="#top" class="logo" aria-label="На главную">
           <span class="logo-box">
-            <!-- замените на свой файл logo.png (широкий/квадратный) -->
-            <img src="logo.png" alt="Логотип" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <span class="ph" style="display:none">ЛОГО</span>
+            <!-- замените на свои файлы: logo-night.png и logo-day.png (широкий/квадратный) -->
+            <span class="ph">ЛОГО</span>
+            <img class="logo-img logo-night" src="logo-night.png" alt="Логотип" onerror="this.remove()">
+            <img class="logo-img logo-day"   src="logo-day.png"   alt="Логотип" onerror="this.remove()">
           </span>
         </a>
       </div>
