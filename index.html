@@ -310,8 +310,22 @@
     .disc-note i{ color:var(--accent); }
     [data-theme="night"] .disc-note i{ color:var(--text); }
 
+    /* ===================== USEFUL INFO ===================== */
+    #info{ background:var(--bg); padding:74px 0; }
+    .info-grid{ margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .info-card{
+      background:var(--card); border:1px solid var(--line-soft);
+      border-radius:18px; padding:24px 22px; transition:.2s;
+    }
+    .info-card:hover{ background:var(--card-hov); border-color:var(--accent); transform:translateY(-2px); }
+    [data-theme="night"] .info-card:hover{ border-color:var(--line); }
+    .info-card i{ font-size:26px; color:var(--accent); }
+    [data-theme="night"] .info-card i{ color:var(--text); }
+    .info-card h3{ font-family:"Unbounded",sans-serif; font-weight:700; text-transform:uppercase; font-size:16px; margin:14px 0 8px; line-height:1.15; }
+    .info-card p{ color:var(--text-mut); font-size:14px; margin:0; }
+
     /* ===================== CONTACT ===================== */
-    #contact{ background:var(--bg); padding:74px 0 64px; }
+    #contact{ background:var(--bg-alt); padding:74px 0 64px; transition:background .35s ease; }
     .contact-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:30px; align-items:center; }
     .contact-title{
       font-family:"Unbounded",sans-serif; font-weight:800;
@@ -337,6 +351,13 @@
     footer{ background:var(--bg-alt); border-top:1px solid var(--line-soft); padding:26px 0; }
     .foot-grid{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center; }
     .foot-grid p{ margin:0; font-size:12px; color:var(--text-mut); letter-spacing:.04em; }
+    .dev-credit{
+      width:100%; font-size:12px; color:var(--text-mut); letter-spacing:.06em;
+      text-transform:uppercase; display:inline-flex; gap:8px; align-items:center;
+      border-top:1px solid var(--line-soft); padding-top:14px; margin-top:4px; transition:.2s;
+    }
+    .dev-credit:hover{ color:var(--accent); }
+    [data-theme="night"] .dev-credit:hover{ color:var(--text); }
 
     /* reveal animation */
     .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
@@ -363,6 +384,7 @@
     @media (max-width:520px){
       .nav-grid{ gap:6px; padding:9px 12px; }
       .disc-grid{ grid-template-columns:1fr; }
+      .info-grid{ grid-template-columns:1fr; }
       .svc{ padding:12px 11px; border-radius:10px; }
       .svc span{ font-size:12.5px; }
       .svc i{ font-size:15px; width:18px; }
@@ -388,10 +410,6 @@
             <!-- замените на свой файл logo.png (широкий/квадратный) -->
             <img src="logo.png" alt="Логотип" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
             <span class="ph" style="display:none">ЛОГО</span>
-          </span>
-          <span class="logo-name">
-            <b>CLEAN ALMATY</b>
-            <span data-i18n="brand_sub">Клининговая служба</span>
           </span>
         </a>
       </div>
@@ -426,6 +444,7 @@
         <a href="#top" data-i18n="nav_home">Главная</a>
         <a href="#services" data-i18n="nav_services">Услуги</a>
         <a href="#discount" data-i18n="nav_discount">Скидки</a>
+        <a href="#info" data-i18n="nav_info">Полезное</a>
         <a href="#contact" data-i18n="nav_contact">Контакты</a>
       </nav>
 
@@ -497,6 +516,39 @@
     </div>
   </section>
 
+  <!-- ===================== USEFUL INFO ===================== -->
+  <section id="info">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow" data-i18n="info_eyebrow">Полезно знать</p>
+        <h2 class="section-title" data-i18n="info_title">О сфере клининга</h2>
+      </div>
+
+      <div class="info-grid reveal">
+        <article class="info-card">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3 data-i18n="info1_t">Генеральная и поддерживающая уборка</h3>
+          <p data-i18n="info1_d">Генеральная уборка проводится глубоко и охватывает труднодоступные места: за мебелью, технику, окна, плинтусы. Поддерживающую делают регулярно, чтобы сохранять результат.</p>
+        </article>
+        <article class="info-card">
+          <i class="fa-solid fa-trowel-bricks"></i>
+          <h3 data-i18n="info2_t">Уборка после ремонта</h3>
+          <p data-i18n="info2_d">После ремонта остаётся строительная пыль, разводы от смесей и налёт на окнах. Такую уборку выполняют в несколько этапов, иначе мелкая пыль оседает снова.</p>
+        </article>
+        <article class="info-card">
+          <i class="fa-solid fa-calendar-check"></i>
+          <h3 data-i18n="info3_t">Как часто убирать</h3>
+          <p data-i18n="info3_d">Кухню и санузел рекомендуют убирать чаще из-за влажности и жира, жилые комнаты — реже. Частота зависит от числа жильцов и наличия животных.</p>
+        </article>
+        <article class="info-card">
+          <i class="fa-solid fa-flask"></i>
+          <h3 data-i18n="info4_t">Профессиональная химия</h3>
+          <p data-i18n="info4_d">Средства подбирают под тип поверхности: камень, дерево, стекло, сантехника. Неправильно подобранное средство может повредить покрытие.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="wrap">
@@ -532,6 +584,9 @@
     <div class="wrap foot-grid">
       <p>© 2026 CLEAN ALMATY. <span data-i18n="footer_rights">Все права защищены.</span></p>
       <p data-i18n="footer_geo">Профессиональный клининг — Алматы и область</p>
+      <a href="#" target="_blank" rel="noopener" class="dev-credit">
+        <i class="fa-solid fa-code"></i> <span data-i18n="footer_dev">Разработка сайта — [ваше имя / ссылка]</span>
+      </a>
     </div>
   </footer>
 
@@ -541,9 +596,12 @@
     /* ============ WhatsApp links ============ */
     const WA_PHONE = "77079062810";
     const WA_TEXT  = "Здравствуйте! Пишу с сайта. Хочу заказать уборку, подскажите детали, пожалуйста.";
-    document.querySelectorAll(".js-wa").forEach(a=>{
-      a.href = "https://wa.me/"+WA_PHONE+"?text="+encodeURIComponent(WA_TEXT);
-    });
+    const WA_SVC = {
+      ru: (s)=> `Здравствуйте! Хочу заказать услугу: «${s}». Подскажите стоимость и детали, пожалуйста.`,
+      kz: (s)=> `Сәлеметсіз бе! «${s}» қызметіне тапсырыс бергім келеді. Бағасы мен мәліметтерін айтыңызшы.`,
+    };
+    function waLink(text){ return "https://wa.me/"+WA_PHONE+"?text="+encodeURIComponent(text); }
+    document.querySelectorAll(".js-wa").forEach(a=>{ a.href = waLink(WA_TEXT); });
 
     /* ============ Services data ============ */
     const SERVICES = [
@@ -576,10 +634,20 @@
       ru:{
         brand_sub:"Клининговая служба",
         nav_home:"Главная", nav_services:"Услуги", nav_discount:"Скидки", nav_contact:"Контакты",
+        nav_info:"Полезное",
         menu_all:"Все виды услуг",
         cta_order:"Заказать уборку",
         hero_tag:"Клининг • Алматы и область",
         services_eyebrow:"Что мы делаем", services_title:"Виды услуг", services_sub:"Жильё • Коммерция • Фасады",
+        info_eyebrow:"Полезно знать", info_title:"О сфере клининга",
+        info1_t:"Генеральная и поддерживающая уборка",
+        info1_d:"Генеральная уборка проводится глубоко и охватывает труднодоступные места: за мебелью, технику, окна, плинтусы. Поддерживающую делают регулярно, чтобы сохранять результат.",
+        info2_t:"Уборка после ремонта",
+        info2_d:"После ремонта остаётся строительная пыль, разводы от смесей и налёт на окнах. Такую уборку выполняют в несколько этапов, иначе мелкая пыль оседает снова.",
+        info3_t:"Как часто убирать",
+        info3_d:"Кухню и санузел рекомендуют убирать чаще из-за влажности и жира, жилые комнаты — реже. Частота зависит от числа жильцов и наличия животных.",
+        info4_t:"Профессиональная химия",
+        info4_d:"Средства подбирают под тип поверхности: камень, дерево, стекло, сантехника. Неправильно подобранное средство может повредить покрытие.",
         disc_eyebrow:"Специальные условия", disc_title:"Скидки", disc_off:"скидка",
         disc_pens_title:"Пенсионерам",
         disc_pens_text:"Специальная скидка для пенсионеров на все виды уборки. Достаточно сообщить при заказе.",
@@ -591,14 +659,25 @@
         contact_wa:"написать сообщение",
         footer_rights:"Все права защищены.",
         footer_geo:"Профессиональный клининг — Алматы и область",
+        footer_dev:"Разработка сайта — [ваше имя / ссылка]",
       },
       kz:{
         brand_sub:"Клининг қызметі",
         nav_home:"Басты бет", nav_services:"Қызметтер", nav_discount:"Жеңілдіктер", nav_contact:"Байланыс",
+        nav_info:"Пайдалы",
         menu_all:"Қызмет түрлері",
         cta_order:"Тазалауға тапсырыс",
         hero_tag:"Клининг • Алматы және облыс",
         services_eyebrow:"Біз не істейміз", services_title:"Қызмет түрлері", services_sub:"Тұрғын үй • Коммерция • Қасбет",
+        info_eyebrow:"Білгеніңіз жөн", info_title:"Клининг саласы туралы",
+        info1_t:"Жалпы және ағымдағы тазалау",
+        info1_d:"Жалпы тазалау тереңдетіп жүргізіледі: жиһаз артын, техниканы, терезелерді, плинтустарды қамтиды. Ағымдағы тазалау нәтижені сақтау үшін жүйелі түрде жасалады.",
+        info2_t:"Жөндеуден кейінгі тазалау",
+        info2_d:"Жөндеуден кейін құрылыс шаңы, ерітінді іздері мен терезедегі қабат қалады. Мұндай тазалау бірнеше кезеңмен жасалады, әйтпесе ұсақ шаң қайта отырады.",
+        info3_t:"Қаншалықты жиі тазалау керек",
+        info3_d:"Ас үй мен санторапты ылғал мен май салдарынан жиірек, тұрғын бөлмелерді сирек тазалаған жөн. Жиілік тұрғын саны мен үй жануарларына байланысты.",
+        info4_t:"Кәсіби химия",
+        info4_d:"Құралдар бет түріне қарай таңдалады: тас, ағаш, шыны, сантехника. Дұрыс таңдалмаған құрал жабынды зақымдауы мүмкін.",
         disc_eyebrow:"Арнайы шарттар", disc_title:"Жеңілдіктер", disc_off:"жеңілдік",
         disc_pens_title:"Зейнеткерлерге",
         disc_pens_text:"Зейнеткерлерге барлық тазалау түрлеріне арнайы жеңілдік. Тапсырыс кезінде айтсаңыз жеткілікті.",
@@ -610,6 +689,7 @@
         contact_wa:"хабарлама жазу",
         footer_rights:"Барлық құқықтар қорғалған.",
         footer_geo:"Кәсіби клининг — Алматы және облыс",
+        footer_dev:"Сайтты әзірлеу — [есіміңіз / сілтеме]",
       }
     };
 
@@ -620,13 +700,16 @@
       grid.innerHTML = ""; menu.innerHTML = "";
       SERVICES.forEach(s=>{
         const label = s[lang];
-        const card = document.createElement("div");
+        const href = waLink(WA_SVC[lang](label));
+
+        const card = document.createElement("a");
         card.className = "svc";
+        card.href = href; card.target = "_blank"; card.rel = "noopener";
         card.innerHTML = `<i class="fa-solid ${s.ic}"></i><span>${label}</span>`;
         grid.appendChild(card);
 
         const link = document.createElement("a");
-        link.href = "#services";
+        link.href = href; link.target = "_blank"; link.rel = "noopener";
         link.innerHTML = `<i class="fa-solid ${s.ic}"></i><span>${label}</span>`;
         menu.appendChild(link);
       });
