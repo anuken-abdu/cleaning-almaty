@@ -359,11 +359,15 @@
     .foot-grid p{ margin:0; font-size:12px; color:var(--text-mut); letter-spacing:.04em; }
     .dev-credit{
       width:100%; font-size:12px; color:var(--text-mut); letter-spacing:.06em;
-      text-transform:uppercase; display:inline-flex; gap:8px; align-items:center;
-      border-top:1px solid var(--line-soft); padding-top:14px; margin-top:4px; transition:.2s;
+      text-transform:uppercase; display:inline-flex; gap:6px; align-items:center; flex-wrap:wrap;
+      border-top:1px solid var(--line-soft); padding-top:14px; margin:4px 0 0; transition:.2s;
     }
-    .dev-credit:hover{ color:var(--accent); }
-    [data-theme="night"] .dev-credit:hover{ color:var(--text); }
+    .dev-name{
+      color:var(--text); font-weight:700; transition:.2s;
+      display:inline-flex; align-items:center; gap:6px;
+    }
+    .dev-name:hover{ color:var(--accent); }
+    [data-theme="night"] .dev-name:hover{ color:var(--text); text-decoration:underline; }
 
     /* reveal animation */
     .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
@@ -590,9 +594,11 @@
     <div class="wrap foot-grid">
       <p>© 2026 CLEAN ALMATY. <span data-i18n="footer_rights">Все права защищены.</span></p>
       <p data-i18n="footer_geo">Профессиональный клининг — Алматы и область</p>
-      <a href="#" target="_blank" rel="noopener" class="dev-credit">
-        <i class="fa-solid fa-code"></i> <span data-i18n="footer_dev">Разработка сайта — [ваше имя / ссылка]</span>
-      </a>
+      <p class="dev-credit">
+        <i class="fa-solid fa-code"></i>
+        <span data-i18n="footer_dev">Разработка сайта —</span>
+        <a class="dev-name js-wa-dev" href="#" target="_blank" rel="noopener">Anuken</a>
+      </p>
     </div>
   </footer>
 
@@ -608,6 +614,13 @@
     };
     function waLink(text){ return "https://wa.me/"+WA_PHONE+"?text="+encodeURIComponent(text); }
     document.querySelectorAll(".js-wa").forEach(a=>{ a.href = waLink(WA_TEXT); });
+
+    /* Developer WhatsApp (separate number) */
+    const WA_DEV_PHONE = "77074534518";
+    const WA_DEV_TEXT  = "Здравствуйте! Пишу по поводу разработки сайта.";
+    document.querySelectorAll(".js-wa-dev").forEach(a=>{
+      a.href = "https://wa.me/"+WA_DEV_PHONE+"?text="+encodeURIComponent(WA_DEV_TEXT);
+    });
 
     /* ============ Services data ============ */
     const SERVICES = [
@@ -665,7 +678,7 @@
         contact_wa:"написать сообщение",
         footer_rights:"Все права защищены.",
         footer_geo:"Профессиональный клининг — Алматы и область",
-        footer_dev:"Разработка сайта — [ваше имя / ссылка]",
+        footer_dev:"Разработка сайта —",
       },
       kz:{
         brand_sub:"Клининг қызметі",
@@ -695,7 +708,7 @@
         contact_wa:"хабарлама жазу",
         footer_rights:"Барлық құқықтар қорғалған.",
         footer_geo:"Кәсіби клининг — Алматы және облыс",
-        footer_dev:"Сайтты әзірлеу — [есіміңіз / сілтеме]",
+        footer_dev:"Сайтты әзірлеу —",
       }
     };
 
